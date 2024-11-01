@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\CustomerRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -9,19 +10,13 @@ use Symfony\Component\Routing\Attribute\Route;
 class MainController extends AbstractController
 {
     #[Route('/')]
-    public function homepage(): Response
+    public function homepage(CustomerRepository $customerRepository): Response
     {
         #example data
-        $developerName = "Connor";
-        $customerArray = [
-            'name' => 'John Doe',
-            'type' => 'Customer',
-            'status' => 'active',
-        ];
+        $customers = $customerRepository->findAll();
 
         return $this->render('main/homepage.html.twig', [
-            "developerName" => $developerName,
-            "customerArray" => $customerArray
+            "customers" => $customers
         ]);
     }
 }

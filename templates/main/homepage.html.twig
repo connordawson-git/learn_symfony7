@@ -6,20 +6,22 @@
 
 {% block body %}
     <h1>Homepage twig</h1>
-    <p>Hello {{ developerName|title }}</p>
 
     <table>
-        <tr>
-            <th>Name</th>
-            <td>{{ customerArray.name|title }}</td>
-        </tr>
-        <tr>
-            <th>Type</th>
-            <td>{{ customerArray.type }}</td>
-        </tr>
-        <tr>
-            <th>Status</th>
-            <td>{{ customerArray.status }}</td>
-        </tr>
+        {%  for customer in customers %}
+            <tr>
+                <th>Name</th>
+                <td>{{ customer.name|title }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ customer.type }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ customer.status }}</td>
+            </tr>
+        {%  endfor %}
+
     </table>
 {% endblock %}

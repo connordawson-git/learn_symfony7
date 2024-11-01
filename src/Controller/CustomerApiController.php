@@ -2,36 +2,16 @@
 
 namespace App\Controller;
 
-use App\Model\Customer;
+use App\Repository\CustomerRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Attribute\Route;
 
 class CustomerApiController extends AbstractController
 {
     #[Route('/api/customers')]
-    public function getCollection()
+    public function getCollection(CustomerRepository $repository)
     {
-        $customers =
-            [
-                new Customer(
-                    1,
-                    'John Doe',
-                    'customer',
-                    'active'
-                ),
-                new Customer(
-                    2,
-                    'Jane Doe',
-                    'customer',
-                    'inactive'
-                ),
-                new Customer(
-                    3,
-                    'James Doe',
-                    'customer',
-                    'inactive'
-                ),
-            ];
+        $customers = $repository->findAll();
 
         return $this->json($customers);
     }
