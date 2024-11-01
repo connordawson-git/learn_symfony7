@@ -12,9 +12,16 @@ class MainController extends AbstractController
     public function homepage(): Response
     {
         #example data
-        $customerName = "Connor";
+        $developerName = "Connor";
+        $customerArray = [
+            'name' => 'John Doe',
+            'type' => 'Customer',
+            'status' => 'active',
+        ];
+
         return $this->render('main/homepage.html.twig', [
-            "customerName" => $customerName
+            "developerName" => $developerName,
+            "customerArray" => $customerArray
         ]);
     }
 }
