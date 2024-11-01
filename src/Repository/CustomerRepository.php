@@ -9,8 +9,8 @@ class CustomerRepository
 {
     public function __construct(private LoggerInterface $logger)
     {
-
     }
+
     public function findAll()
     {
         $this->logger->info('Customer data retrieved');
@@ -36,5 +36,15 @@ class CustomerRepository
                     'inactive'
                 ),
             ];
+    }
+
+    public function find(int $id)
+    {
+        foreach ($this->findAll() as $customer) {
+            if ($customer->getId() === $id) {
+                return $customer;
+            }
+        }
+        return null;
     }
 }
