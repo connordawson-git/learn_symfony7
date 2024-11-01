@@ -1,17 +1,25 @@
-<h1>Homepage twig</h1>
-<p>Hello {{ developerName|title }}</p>
+{% extends 'base.html.twig' %}
+{% block title %}
+    {{ parent() }}
+    Homepage
+{% endblock %}
 
-<table>
-    <tr>
-        <th>Name</th>
-        <td>{{ customerArray.name|title }}</td>
-    </tr>
-    <tr>
-        <th>Type</th>
-        <td>{{ customerArray.type }}</td>
-    </tr>
-    <tr>
-        <th>Status</th>
-        <td>{{ customerArray.status }}</td>
-    </tr>
-</table>
+{% block body %}
+    <h1>Homepage twig</h1>
+    <p>Hello {{ developerName|title }}</p>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <td>{{ customerArray.name|title }}</td>
+        </tr>
+        <tr>
+            <th>Type</th>
+            <td>{{ customerArray.type }}</td>
+        </tr>
+        <tr>
+            <th>Status</th>
+            <td>{{ customerArray.status }}</td>
+        </tr>
+    </table>
+{% endblock %}
