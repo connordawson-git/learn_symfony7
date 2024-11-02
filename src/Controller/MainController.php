@@ -12,11 +12,13 @@ class MainController extends AbstractController
     #[Route('/')]
     public function homepage(CustomerRepository $customerRepository): Response
     {
-        #example data
+        // example data
         $customers = $customerRepository->findAll();
+        $customer = $customers[array_rand($customers)];
 
         return $this->render('main/homepage.html.twig', [
-            "customers" => $customers
+            'customers' => $customers,
+            'customer' => $customer,
         ]);
     }
 }
