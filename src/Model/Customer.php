@@ -2,13 +2,14 @@
 
 namespace App\Model;
 
+
 class Customer
 {
     public function __construct(
         private int $id,
         private string $name,
         private string $type,
-        private string $status,
+        private CustomerStatusEnum $status,
     ) {
     }
 
@@ -39,7 +40,7 @@ class Customer
     /**
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus(): CustomerStatusEnum
     {
         return $this->status;
     }

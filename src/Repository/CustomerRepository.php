@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Model\Customer;
+use App\Model\CustomerStatusEnum;
 use Psr\Log\LoggerInterface;
 
 class CustomerRepository
@@ -21,19 +22,19 @@ class CustomerRepository
                     1,
                     'John Doe',
                     'customer',
-                    'active'
+                    CustomerStatusEnum::ACTIVE
                 ),
                 new Customer(
                     2,
                     'Jane Doe',
                     'customer',
-                    'inactive'
+                    CustomerStatusEnum::PENDING
                 ),
                 new Customer(
                     3,
                     'James Doe',
                     'customer',
-                    'inactive'
+                    CustomerStatusEnum::INACTIVE
                 ),
             ];
     }
@@ -45,6 +46,7 @@ class CustomerRepository
                 return $customer;
             }
         }
+
         return null;
     }
 }
